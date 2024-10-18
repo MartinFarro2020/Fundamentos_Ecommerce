@@ -306,7 +306,6 @@ section {
     background-color:var(--backpolo);
     padding: 1rem;
     border-radius: 1rem;
-    
 }
 
 .product_img{
@@ -324,7 +323,9 @@ section {
 	transform: rotate(0deg) scale(0.9);
 }
 
-
+#name_product :hover{
+    color: var(--navmenu_twocolor);
+}
 
 
 

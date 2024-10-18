@@ -1,9 +1,8 @@
+const BASE_URL = "https://services-academlo-shopping.onrender.com/"
+
 async function getProducts(){
     try{
-        const data = await fetch(
-            "https://ecommercebackend.fundamentos-29.repl.co/"
-            // "https://services-academlo-shopping.onrender.com/"
-        );
+        const data = await fetch(BASE_URL);
 
         const res = await data.json();
         localStorage.setItem("products", JSON.stringify(res));
@@ -64,7 +63,7 @@ function printProducts(store){
                     : "<div></div>"
                  }
 
-                <h3>${name}</h3>
+                <h3 class="name_product">${name}</h3>
                 <p>${price} - $${quantity} unidades</p>
                 
                 
@@ -72,10 +71,11 @@ function printProducts(store){
         `;
     });
 
-    document.querySelector(".products").innerHTML=html;
+    document.querySelector(".products").innerHTML = html;
+    
 }
 
-function filter(store) {
+function filterProducts(store) {
 
 
     const buttons = document.querySelectorAll('.buttons .btn')
@@ -145,8 +145,6 @@ function filter(store) {
     })
 }
 
-
-
 function handleshowcart(){
     const iconcart = document.querySelector('.icon_cart');
     const cart = document.querySelector('.cart');
@@ -209,9 +207,24 @@ function addToCartFromProducts(store){
                     amount:1,
                 };
             }
+              const btnOpenModal = document.querySelector(".products");
+              const btnCloseModal = document.querySelector("#btn_close_modal");
+              const modal = document.querySelector("#modal");
+    
+             btnOpenModal.addEventListener("click",function (e){
+              if(e.target.classList.contanis("name_product")){
+                modal.showModal();  
+                return
+              }
+             })
 
             localStorage.setItem("cart",JSON.stringify(store.cart));
 
+              
+
+            btnCloseModal.addEventListener("click",()=>{
+             modal.close();
+            })
             printProductsInCart(store);
             printTotal(store); 
          }
@@ -301,12 +314,12 @@ function handleTotal(store){
 async function main(){
     const res = JSON.parse(window.localStorage.getItem("products")) || (await getProducts());
     const store = {
-        products: JSON.parse(localStorage.getItem("products")) || await getProducts(),
+        products: JSON.parse(localStorage.getItem("products")) || (await getProducts()),
         cart: JSON.parse(localStorage.getItem("cart")) || {},
     };
 
     printProducts(store);
-    // filterProducts(store);
+    filterProducts(store);
     darkmode();
     navScroll()
     handleshowcart();
@@ -315,8 +328,20 @@ async function main(){
     handlecart(store); 
     printTotal(store);  
     handleTotal(store); 
-    filter(store);
+    
 
+
+    const btnOpenModal = document.querySelector(".name_product");
+    const btnCloseModal = document.querySelector("#btn_close_modal");
+    const modal = document.querySelector("#modal");
+    
+    btnOpenModal.addEventListener("click",(e)=>{
+        modal.showModal();
+    })
+
+    btnCloseModal.addEventListener("click",()=>{
+        modal.close();
+    })
     
 }
 main();
