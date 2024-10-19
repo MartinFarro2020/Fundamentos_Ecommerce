@@ -8,7 +8,8 @@ async function getProducts(){
         localStorage.setItem("products", JSON.stringify(res));
 
         window.localStorage.setItem("products",JSON.stringify(res));
-
+        console.log(res);
+        
         return res;
 
     } catch (error){
@@ -50,7 +51,7 @@ function printProducts(store){
         price,
         quantity,
     }) {
-        console.log({id,image,name,price,quantity,});
+        console.log({id,image,name,price,quantity,category});
 
         html +=`
             <div class="product">
@@ -87,17 +88,13 @@ function filterProducts(store) {
 
         button.addEventListener("click", function (e) {
             let filter = e.target.innerHTML
-          
+            
             main()
             if (filter == "Show All") {
                 printProducts(store)
-                console.log(filter)
-               
                 return
 
-
             } else if (filter.toLowerCase().includes("hoddie")) {
-                console.log(filter)
                 // main()
                 const newArray = store.products.filter(product => {
                     return product.category === filter.toLowerCase();

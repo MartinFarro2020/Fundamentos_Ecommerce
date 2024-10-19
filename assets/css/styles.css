@@ -516,3 +516,33 @@ section {
         gap: 9rem;
     }
 }
+
+@media (max-width:699px){
+    .data_container{
+        max-width: 699px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    
+    .buttons{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-content: center;
+        padding: 1rem;
+        margin: 0 auto;
+        gap: 3rem;
+    }
+
+    .data_person{
+        width: 300px;
+        height: 70px;
+    }
+
+    .data_person p{
+        display: flex;
+        flex-direction: column;
+        
+        white-space: wrap;
+        margin:10px 10px;
+    }
+}
