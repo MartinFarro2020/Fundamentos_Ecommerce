@@ -91,7 +91,6 @@ div{
     display: flex;
     justify-content:space-between;
     align-items:center;
-    
     max-width: 1024px;
     padding:0 1rem;
     gap:1rem;
@@ -515,9 +514,14 @@ section {
         padding-top: 2rem;
         gap: 9rem;
     }
+
 }
 
 @media (max-width:699px){
+    .navbar{
+        max-width: 300px;
+        margin:0;
+    }
     .data_container{
         max-width: 699px;
         margin: 0 auto;
