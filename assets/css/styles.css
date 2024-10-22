@@ -525,7 +525,7 @@ section {
     }
     .cart{
         width: 250px;
-        height: 800px;
+        height: 600px;
         left: 0;
         transform:translateX(150%);
         transition: transform 0.5s;
