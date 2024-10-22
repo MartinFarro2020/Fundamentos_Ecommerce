@@ -18,6 +18,7 @@
     --footer_color:rgb(230, 225, 225);
     --h--navbar: 50px;
     --bg:#fff;
+    --bgtwo:#ebe9e9;
     --color:#000;
 }
 html {
@@ -345,7 +346,7 @@ section {
 }
 
 .cart{
-    background-color:var(--bg);
+    background-color:var(--bgtwo);
     position: fixed;
     top:var(--h--navbar);
     right: 0;
@@ -519,9 +520,21 @@ section {
 
 @media (max-width:699px){
     .navbar{
-        max-width: 300px;
+        max-width: 150px;
         margin:0;
     }
+    .cart{
+        width: 250px;
+        height: 800px;
+        left: 0;
+        transform:translateX(150%);
+        transition: transform 0.5s;
+    }
+    .cart_show{
+        transform:translateX(50%)
+    }
+
+
     .data_container{
         max-width: 699px;
         margin: 0 auto;
